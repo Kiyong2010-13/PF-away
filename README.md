@@ -21,11 +21,22 @@ jリーグチームのサポーターによるアウェイ遠征時による情�
 
 ## 設計書
 ER図:  https://drive.google.com/file/d/11DwtrroW8HUz8gy9KB7gU9pG90SQ5_px/view?usp=sharing
+
 テーブル定義書: https://docs.google.com/spreadsheets/d/1J9-hF7d629dnJe05TENECHF4AxlohFIHX1diT29oyx4/edit?usp=sharing
 
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVjAFE/edit#gid=0
+
+## 機能
+
+* ログイン・ログアウト
+ユーザー機能
+検索機能
+投稿機能
+いいね(ハート)機能
+投稿に対するコメント機能
+*[可能であれば]: チャット機能
 
 ## 開発環境
 - OS：Linux(CentOS)
