@@ -21,6 +21,8 @@ jリーグチームのサポーターによるアウェイ遠征時による情�
 
 ## 設計書
 ER図:  https://drive.google.com/file/d/11DwtrroW8HUz8gy9KB7gU9pG90SQ5_px/view?usp=sharing
+テーブル定義書: https://docs.google.com/spreadsheets/d/1J9-hF7d629dnJe05TENECHF4AxlohFIHX1diT29oyx4/edit?usp=sharing
+
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVjAFE/edit#gid=0
@@ -33,5 +35,5 @@ https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVj
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+<!--- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。-->
+<!--- 使用しない場合は、使用素材の項目をREADMEから削除してください。-->
