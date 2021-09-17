@@ -31,17 +31,18 @@ https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVj
 ## 機能
 
 * ログイン・ログアウト
-ユーザー機能
-検索機能
-投稿機能
-いいね(ハート)機能
-投稿に対するコメント機能
-*[可能であれば]: チャット機能
+* ユーザー機能
+* 検索機能
+* 投稿機能
+* いいね(ハート)機能
+* 投稿に対するコメント機能
+* [可能であれば]: チャット機能
 
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,Ruby,SQL
 - フレームワーク：Ruby on Rails
+- CSSフレームワーク：BootStrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
