@@ -8,8 +8,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :encrypted_password, null: false, default: ""
       t.string :user_name, null: false, default: ""
       t.string :profile_image_id
-      t.string :introduction, null: false, default: ""
-      t.integer :favorite_team, null: false, default: 0
+      t.string :introduction
+      t.integer :favorite_team, default: 0
       t.boolean :is_deleted, default: false, null: false
 
 
