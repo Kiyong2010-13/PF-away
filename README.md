@@ -32,7 +32,6 @@ Jリーグチームのサポーターによるアウェイ遠征時において�
 
 
 
-
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVjAFE/edit#gid=0
 
