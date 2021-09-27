@@ -10,6 +10,30 @@
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top header border-bottom border-dark">
+        <div class="container">
+          <nav class="nav navbar-nav navbar-left">
+            <h2><li><%= link_to "This is AwayEX!!",  class: "nav-link border border-dark text-dark" %></li></h2>
+          </nav>
+          <ul class="nav navbar-right">
+            <% if admin_signed_in? %>
+              <li><%= link_to "会員一覧", admin_root_path, class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ジャンル管理", admin_genres_path, class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link border border-dark", method: :delete %></li>
+            <% elsif customer_signed_in? %>
+              <li><%= link_to "マイページ",  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "投稿一覧",  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ログアウト",  class: "nav-link border border-dark", method: :delete %></li>
+            <% else %>
+              <li><%= link_to "HOME",  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ABOUT",  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "新規登録",  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ログイン",  class: "nav-link border border-dark" %></li>
+
+            <% end %>
+
+        </div>
+      </header>
     <%= yield %>
   </body>
 </html>
