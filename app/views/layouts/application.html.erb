@@ -13,7 +13,7 @@
     <header class="navbar navbar-fixed-top header border-bottom border-dark">
         <div class="container">
           <nav class="nav navbar-nav navbar-left">
-            <h2><li><%= link_to "This is AwayEX!!",  class: "nav-link border border-dark text-dark" %></li></h2>
+            <h2><li><%= link_to "This is AwayEX!!", root_path,  class: "nav-link border border-dark text-dark" %></li></h2>
           </nav>
           <ul class="nav navbar-right">
             <% if admin_signed_in? %>
@@ -25,10 +25,10 @@
               <li><%= link_to "投稿一覧",  class: "nav-link border border-dark" %></li>
               <li><%= link_to "ログアウト",  class: "nav-link border border-dark", method: :delete %></li>
             <% else %>
-              <li><%= link_to "HOME",  class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ABOUT",  class: "nav-link border border-dark" %></li>
-              <li><%= link_to "新規登録",  class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ログイン",  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "HOME", root_path,  class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ABOUT", about_path, class: "nav-link border border-dark" %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path, class: "nav-link border border-dark" %></li>
+              <li><%= link_to "ログイン", new_customer_session_path, class: "nav-link border border-dark" %></li>
 
             <% end %>
 
