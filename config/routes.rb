@@ -4,11 +4,19 @@ Rails.application.routes.draw do
   passwords:     'admin/passwords',
   registrations: 'admin/registrations'
   }
-  devise_for :customers
+  devise_for :customers, controllers: {
+  sessions:      'public/sessions',
+  passwords:     'public/passwords',
+  registrations: 'public/registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   namespace :admin do
     root :to => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :customers, only: [:show, :edit, :update]
   end
+
+  root to: 'homes#top'
+  get "about" => "homes#about"
 end
