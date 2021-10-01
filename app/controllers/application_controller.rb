@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_root_path
     when Customer
-      root_path
+      customer_path(current_customer.id)
     end
   end
 
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, :introduction, :favorite_team])
   end
 end

@@ -3,8 +3,11 @@ ja:
     attributes:
       genre:
         name: 'ジャンル名'
+      customer:
+        user_name: 'ユーザーネーム'
+        email: 'メールアドレス'
   enums:
-    customers:
+    customer:
       favorite_team:
         unspecified: '指定なし'
         sapporo: '北海道コンサドーレ札幌'
