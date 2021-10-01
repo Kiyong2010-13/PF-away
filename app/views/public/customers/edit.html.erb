@@ -1,10 +1,16 @@
+<div class="error">
+    <% if @customer.errors.any? %>
+      <% @customer.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-4 my-5">
-      <h2 class="mb-4 text-center">新規会員登録</h2>
-      <%= form_with model: resource, url: customer_registration_path, local: true do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+      <h2 class="mb-4 text-center">会員情報編集</h2>
+      <%= form_with model:@customer, url:customer_path, method: :patch, local:true do |f| %>
 
         <div class="field">
           <%= f.label :ユーザーネーム %><span>*</span><br />
@@ -17,17 +23,10 @@
         </div>
 
         <div class="field">
-          <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
-          <% end %><span>*</span><br />
-          <%= f.password_field :password, class: "form-control mb-2", autocomplete: "new-password" %>
+          <%= f.label :アイコン %><br />
+          <%= f.attachment_field :profile_image, class: "mb-2", placeholder: "プロフィール画像" %>
         </div>
 
-        <div class="field">
-          <%= f.label :パスワード %><span>(確認用)*</span><br />
-          <%= f.password_field :password_confirmation, class: "form-control mb-2", autocomplete: "new-password" %>
-        </div>
 
         <div class="field">
           <%= f.label :好きなチーム %><br />
@@ -42,12 +41,9 @@
 
 
         <div class="actions">
-          <%= f.submit "新規登録", class: "form-control btn btn-success" %>
+          <%= f.submit "更新する", class: "form-control btn btn-success", data: {confirm: "更新しますか? "} %>
         </div>
       <% end %>
-      <h5 class="mt-5">※既に登録済みの方</h5>
-      <%= link_to "こちら", new_customer_session_path %>からログインしてください
-    </div>
     <div class="col-sm-4"></div>
   </div>
 </div>

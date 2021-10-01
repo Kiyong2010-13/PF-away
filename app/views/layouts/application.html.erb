@@ -10,25 +10,25 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top header border-bottom border-dark">
+    <header class="navbar navbar-fixed-top header border-bottom navbar-dark bg-dark border-dark sticky-top">
         <div class="container">
           <nav class="nav navbar-nav navbar-left">
-            <h2><li><%= link_to "This is AwayEX!!", root_path,  class: "nav-link border border-dark text-dark" %></li></h2>
+            <h2><li><%= link_to "This is AwayEX!!", root_path,  class: "nav-link text-light border border-dark " %></li></h2>
           </nav>
           <ul class="nav navbar-right">
             <% if admin_signed_in? %>
-              <li><%= link_to "会員一覧", admin_root_path, class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ジャンル管理", admin_genres_path, class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link border border-dark", method: :delete %></li>
+              <li><%= link_to "会員一覧", admin_root_path, class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "ジャンル管理", admin_genres_path, class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link border text-light border-dark", method: :delete %></li>
             <% elsif customer_signed_in? %>
-              <li><%= link_to "マイページ",  class: "nav-link border border-dark" %></li>
-              <li><%= link_to "投稿一覧",  class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ログアウト",  class: "nav-link border border-dark", method: :delete %></li>
+              <li><%= link_to "マイページ", customer_path(current_customer.id),  class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "投稿一覧",  class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "ログアウト", destroy_customer_session_path, class: "nav-link border text-light border-dark", method: :delete %></li>
             <% else %>
-              <li><%= link_to "HOME", root_path,  class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ABOUT", about_path, class: "nav-link border border-dark" %></li>
-              <li><%= link_to "新規登録", new_customer_registration_path, class: "nav-link border border-dark" %></li>
-              <li><%= link_to "ログイン", new_customer_session_path, class: "nav-link border border-dark" %></li>
+              <li><%= link_to "HOME", root_path,  class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "ABOUT", about_path, class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "新規登録", new_customer_registration_path, class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "ログイン", new_customer_session_path, class: "nav-link border text-light border-dark" %></li>
 
             <% end %>
 

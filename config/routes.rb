@@ -19,4 +19,12 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get "about" => "homes#about"
+  scope module: :public do
+    resources :customers, only: [:show, :update, :edit] do
+      member do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
+  end
 end

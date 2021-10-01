@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-center my-3">
+      <h2><strong><%= @customer.user_name %></strong>さんの会員情報</h2>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+　　<div class="col-sm-8 text-center my-4">
+　　  <h4>プロフィール</h4>
+　　  <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>応援チーム :</th>
+            <th><%= @customer.favorite_team_i18n %></th>
+          </tr>
+          <tr>
+            <th>自己紹介文 :</th>
+            <th><%= @customer.introduction %></th>
+          </tr>
+          <% if @customer.id == current_customer.id %>
+          <tr>
+            <th>メールアドレス :</th>
+            <th><%= @customer.email %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+　　</div>
+　</div>
+　<div class="row">
+　  <div class="col-sm-6 text-center">
+　    <h5>投稿一覧</h5>
+　    <table class="table table-bordered">
+　      <thead>
+　        <tr>
+　          <th>投稿日時</th>
+　          <th>タイトル</th>
+　        </tr>
+　      </thead>
+　      <tbody>
+　      <% @posts.each do |post| %>
+　        <tr>
+　          <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+　          <td><%= post.title %></td>
+　        </tr>
+　       <% end %>
+　       <%= paginate @po %>
+　      </tbody>
+　    </table>
+　  </div>
+　  <div class="col-sm-1"></div>
+　  <div class="col-sm-3 text-center">
+　    <h5>いいね一覧</h5>
+　    <table class="table table-bordered">
+　      <thead>
+　        <tr>
+　          <th>タイトル</th>
+　        </tr>
+　      </thead>
+　      <tbody>
+　        <td></td>
+　      </tbody>
+　    </table>
+　  </div>
+　</div>
+　<div class="row">
+　  <% if @customer.id == current_customer.id %>
+　    <div class="col-sm-5">
+    　  <%= link_to '会員情報を編集する', edit_customer_path, class: 'btn btn-success' %>
+    　</div>
+    　<div class="col-sm-5">
+    　  <%= link_to '退会する', unsubscribe_customer_path,class:"btn btn-danger" %>
+    　</div>
+　  <% end %>
+　</div>
+</div>
