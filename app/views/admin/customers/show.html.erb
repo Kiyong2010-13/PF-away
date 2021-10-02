@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 text-center my-3">
+      <h3><strong><%= @customer.user_name %></strong>さんの会員詳細情報</h3>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 text-center my-3">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="width: 30% align-middle">プロフィール画像</th>
+            <th><%= attachment_image_tag @customer, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", class: "rounded-circle"  %></th>
+          </tr>
+          <tr>
+            <th style="width: 30%">会員ID</th>
+            <th><%= @customer.id %></th>
+          </tr>
+          <tr>
+            <th style="width: 30%">ユーザーネーム</th>
+            <th><%= @customer.user_name %></th>
+          </tr>
+          <tr>
+            <th style="width: 30%">メールアドレス</th>
+            <th><%= @customer.email %></th>
+          </tr>
+          <tr>
+            <th style="width: 30%">応援チーム</th>
+            <th><%= @customer.favorite_team_i18n %></th>
+          </tr>
+          <tr>
+          <tr>
+            <th style="width: 30% align-middle">自己紹介文</th>
+            <th><%= @customer.introduction %></th>
+          </tr>
+          <tr>
+            <th style="width: 30%">会員ステータス</th>
+            <th><% if @customer.is_deleted == false %>
+              <span class="text-danger">有効</span>
+            <% else %>
+              <span class="text-primary">退会</span>
+            <% end %></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-md-3 text-center">
+      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success btn-block" %>
+    </div>
+    <div class="col-md-3 text-center">
+      <%= link_to "戻る", admin_root_path, class: "btn btn-info btn-block" %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>

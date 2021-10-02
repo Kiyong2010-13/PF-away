@@ -8,7 +8,7 @@
         <thead>
           <tr>
             <th>会員ID</th>
-            <th>ユーザー名</th>
+            <th>ユーザーネーム</th>
             <th>メールアドレス</th>
             <th>ステータス</th>
           </tr>
@@ -16,14 +16,14 @@
         <tbody>
           <% @customers.each do |customer| %>
             <tr>
-              <td><%= customer.id %></td>
+              <td><%= link_to customer.id, admin_customer_path(customer.id) %></td>
               <td><%= customer.user_name %></td>
               <td><%= customer.email %></td>
               <td>
                 <% if customer.is_deleted == false %>
-                  <span>有効</span>
+                  <span class="text-danger">有効</span>
                 <% else %>
-                  <span>退会済</span>
+                  <span class="text-primary">退会</span>
                 <% end %>
               </td>
             </tr>

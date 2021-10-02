@@ -23,14 +23,14 @@
         </div>
 
         <div class="field">
-          <%= f.label :アイコン %><br />
+          <%= f.label :プロフィール画像 %><br />
           <%= f.attachment_field :profile_image, class: "mb-2", placeholder: "プロフィール画像" %>
         </div>
 
 
         <div class="field">
           <%= f.label :好きなチーム %><br />
-          <%= f.select :favorite_team, options_for_select(Customer.favorite_teams_i18n.invert, selected: f.object.favorite_team),  { class: 'form-control', id: 'favorite_team' } %>
+          <%= f.select :favorite_team, options_for_select(Customer.favorite_teams_i18n.invert, selected: f.object.favorite_team),  { class: 'form-control mb-2', id: 'favorite_team' } %>
         </div>
 
         <div class="field">
