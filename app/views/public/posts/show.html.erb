@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 text-center my-3">
+      <h3><%= @post.title %></h3></br>
+      (<%= l @post.created_at %>)
+    </div>
+    <div class="col-sm-3 text-center">
+      <table class="table table-bordered">
+　      <tbody>
+　        <tr>
+　          <th style="width: 35%">ジャンル</th>
+　          <td style="width: 65%"><%= @post.genre.name %></td>
+　        </tr>
+　      </tbody>
+　    </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 text-center my-3">
+      <%= attachment_image_tag @post, :post_image, :fill, 350, 350, fallback: "no_image.jpg"  %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 my-3">
+      <h5 class="text-center"><span class="border-bottom border-dark">投稿内容</span></h5></br>
+      <h6 class="text-center"><strong><%= @post.body %></strong></h6>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2  my-2 text-center">
+      <% if @post.good_by?(current_customer) %>
+         <%= link_to post_good_path(@post), method: :DELETE do %>
+         <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+         <%= @post.goods.count %>いいね
+         <% end %>
+      <% else %>
+        <%= link_to post_goods_path(@post) , method: :POST do %>
+        <i class="far fa-heart" aria-hidden="true"></i>
+        <%= @post.goods.count %>いいね
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row mt-4 border-top border-dark">
+    <div class="col-sm-3"></div>
+    <div class="field col-sm-6 mt-4 text-center">
+      <%= form_for [@post, @comment] do |f| %>
+        <h5 class="mb-2"><strong>投稿にコメントする</strong></h5>
+        <%= f.text_field :comment, size: "40x35" %>
+        <%= f.submit '送信', class: "btn btn-outline-secondary btn-sm" %>
+      <% end %>
+    </div>
+    <div class="col-sm-3">
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-12">
+       <p class="text-center text-primary"><strong class="border-bottom border-dark">コメント件数：【<%= @post.comments.count %>】件</strong></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 20%">投稿日時</th>
+            <th style="width: 20%">投稿者</th>
+            <th style="width: 50%">内容</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= l comment.created_at %></td>
+              <td>
+                <%= link_to customer_path(comment.customer) do %>
+                  <%= attachment_image_tag comment.customer, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size:'30x30', class: "rounded-circle mb-2" %>
+                  <%= comment.customer.user_name %>
+                <% end %>
+              </td>
+              <td><%= comment.comment %></td>
+              <td>
+                <% if comment.customer.id == current_customer.id %>
+                  <%= link_to "削除", post_comment_path(@post, comment), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                <% end %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <% if @post.customer.id == current_customer.id %>
+      <div class="col-sm-4 text-center">
+    　  <%= link_to '投稿編集', edit_post_path, class: 'btn btn-success btn-block' %>
+    　</div>
+    　<div class="col-sm-4 text-center">
+    　  <%= link_to '投稿削除', post_path, class:"btn btn-danger btn-block", method: :delete, data: {confirm: "削除しますか?"} %>
+    　</div>
+    <% end %>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

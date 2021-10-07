@@ -26,7 +26,7 @@
 
       <div class="field mb-3">
         <%= f.label :会員ステータス %><br />
-        <%= f.radio_button :is_deleted, "有効", checked: false %><strong class="text-danger">有効</strong> <%= f.radio_button :is_deleted, "退会" %><strong class="text-primary">退会</strong>
+        <%= f.radio_button :is_deleted, false %><strong class="text-danger">有効</strong> <%= f.radio_button :is_deleted, true %><strong class="text-primary">退会</strong>
       </div>
 
       <div class="actions">

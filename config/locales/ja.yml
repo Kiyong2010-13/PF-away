@@ -68,3 +68,6 @@ ja:
         kagoshima: '鹿児島ユナイテッドFC'
         ryukyu: 'FC琉球'
         samurai_blue: '日本代表'
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
