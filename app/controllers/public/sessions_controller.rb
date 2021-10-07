@@ -2,7 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :reject_user, only: [:create]
+  before_action :reject_customer, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -25,11 +25,14 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  def reject_user
-      if current_customer.is_deleted == true
-        reset_session
-        flash[:error] = "＊退会済みです。"
-        redirect_to new_customer_registration_path
+
+  def reject_customer
+    @customer = Customer.find_by(email: params[:customer][:email].downcase)
+      if @customer
+         if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+           flash[:error] = "＊退会済みです。"
+           redirect_to new_customer_registration_path
+         end
       end
   end
 end

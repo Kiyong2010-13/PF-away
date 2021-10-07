@@ -22,7 +22,7 @@
               <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link border text-light border-dark", method: :delete %></li>
             <% elsif customer_signed_in? %>
               <li><%= link_to "マイページ", customer_path(current_customer.id),  class: "nav-link border text-light border-dark" %></li>
-              <li><%= link_to "投稿一覧",  class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "投稿一覧", posts_path, class: "nav-link border text-light border-dark" %></li>
               <li><%= link_to "ログアウト", destroy_customer_session_path, class: "nav-link border text-light border-dark", method: :delete %></li>
             <% else %>
               <li><%= link_to "HOME", root_path,  class: "nav-link border text-light border-dark" %></li>
@@ -34,6 +34,8 @@
 
         </div>
       </header>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

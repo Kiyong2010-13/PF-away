@@ -38,11 +38,13 @@
           </tr>
           <tr>
             <th style="width: 30%">会員ステータス</th>
-            <th><% if @customer.is_deleted == false %>
-              <span class="text-danger">有効</span>
-            <% else %>
-              <span class="text-primary">退会</span>
-            <% end %></th>
+            <th>
+              <% if @customer.is_deleted == false %>
+                <span class="text-danger">有効</span>
+              <% else %>
+                <span class="text-primary">退会</span>
+              <% end %>
+            </th>
           </tr>
         </tbody>
       </table>

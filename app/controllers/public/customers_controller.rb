@@ -1,10 +1,10 @@
 class Public::CustomersController < ApplicationController
+before_action :authenticate_customer!
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts
-    @po = Customer.page(params[:page]).per(3)
+    @posts = @customer.posts.page(params[:page]).per(3)
+    @goods = @customer.goods
   end
-
   def edit
     @customer = Customer.find(params[:id])
   end
@@ -16,6 +16,11 @@ class Public::CustomersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def good
+    @customer = Customer.find(params[:id])
+    @goods = @customer.goods.page(params[:page]).per(15)
   end
 
   def unsubscribe

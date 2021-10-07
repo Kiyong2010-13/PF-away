@@ -19,6 +19,8 @@ module ThisIsAway
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config/locales/*.yml').to_s]
 
+    config.time_zone = 'Asia/Tokyo'
+
     Refile.secret_key = '64e52f1435bae1f1e15dc89a06b7bb6b0f869551d831a1aa2d04f569d430b185f2d61af7253f887ddd0ed1b11b79b5bab9358f392d9e57f67308fe60251a617b'
   end
 end

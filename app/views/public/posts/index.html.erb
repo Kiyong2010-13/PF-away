@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"><%= link_to "投稿する", new_post_path, class: "btn btn-outline-warning btn-lg" %></div>
+    <div class="col-sm-4 my-5">
+      <h1 class="mb-3 text-center"><strong>投稿一覧</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>投稿日時</th>
+            <th>タイトル</th>
+            <th>投稿ユーザー</th>
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= l post.created_at %></td>
+              <td><%= link_to post.title, post_path(post.id) %></td>
+              <td>
+                <%= link_to customer_path(post.customer.id) do %>
+                  <%= attachment_image_tag post.customer, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size:'25x25', class: "rounded-circle mb-2" %>
+                  <%= post.customer.user_name %>
+                <% end %>
+                </td>
+              <td><%= post.genre.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>

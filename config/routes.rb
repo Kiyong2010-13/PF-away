@@ -24,7 +24,12 @@ Rails.application.routes.draw do
       member do
         get 'unsubscribe'
         patch 'withdraw'
+        get 'good'
       end
+    end
+    resources :posts do
+      resources :comments, only: [:create, :destroy]
+      resources :goods, only: [:create, :destroy]
     end
   end
 end
