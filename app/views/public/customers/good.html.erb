@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6 text-center my-3">
-      <h3><strong><%= @customer.user_name %></strong>さんのいいねした投稿一覧</h3>
+      <h3><strong><%= @customer.user_name %></strong>さんのいいね<i class="fas fa-heart"></i>した投稿一覧</h3></br>
+      <h5><span class="border-bottom border-dark">全<strong class="text-danger"><%= @customer.goods.count %></strong>件</span></h5>
     </div>
     <div class="col-sm-3"></div>
   </div>
@@ -18,19 +19,25 @@
           </tr>
         </thead>
         <tbody>
-        <% @goods.each do |good| %>
-          <tr>
-            <td><%= l good.post.created_at %></td>
-            <td><%= link_to good.post.title, post_path(good.post.id) %></td>
-            <td>
-              <%= link_to customer_path(good.post.customer.id) do %>
-                <%= attachment_image_tag good.post.customer, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size:'25x25', class: "rounded-circle mb-2" %>
-                <%= good.post.customer.user_name %>
-              <% end %>
-            </td>
-            <td><%= good.post.genre.name %></td>
-          </tr>
-        <% end %>
+          <% if @goods.exists? %>
+            <% @goods.each do |good| %>
+              <tr>
+                <td><%= l good.post.created_at %></td>
+                <td><%= link_to good.post.title, post_path(good.post.id) %></td>
+                <td>
+                  <%= link_to customer_path(good.post.customer.id) do %>
+                    <%= attachment_image_tag good.post.customer, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size:'25x25', class: "rounded-circle mb-2" %>
+                    <%= good.post.customer.user_name %>
+                  <% end %>
+                </td>
+                <td><%= good.post.genre.name %></td>
+              </tr>
+            <% end %>
+          <% else %>
+             <tr>
+               <td colspan="4"><h4 class="mt-4"><strong>いいねをした投稿はありません。</strong></h4></td>
+             </tr>
+          <% end %>
         </tbody>
       </table>
       <%= paginate @goods %>
