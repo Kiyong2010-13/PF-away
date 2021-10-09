@@ -8,6 +8,24 @@ class Customer < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :goods, dependent: :destroy
 
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+
+  def follow(customer_id)
+    unless self == customer_id
+     relationships.create(followed_id: customer_id)
+    end
+  end
+  def unfollow(customer_id)
+    relationships.find_by(followed_id: customer_id).destroy
+  end
+  def following?(customer)
+    followings.include?(customer)
+  end
+
   validates :user_name, presence: true
   validates :email, presence: true
   attachment :profile_image

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get "about" => "homes#about"
   scope module: :public do
     resources :customers, only: [:show, :update, :edit] do
+      resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
       member do
         get 'unsubscribe'
         patch 'withdraw'

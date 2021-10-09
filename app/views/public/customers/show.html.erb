@@ -6,9 +6,34 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 my-3 mb-2">
+      <table class="table table-borderless text-center">
+        <tehad>
+          <tr>
+            <th>フォロー</th>
+            <th>フォロワー</th>
+          </tr>
+        </tehad>
+        <tbody>
+          <tr>
+            <td><%= link_to @customer.followings.count, customer_followings_path(@customer.id) %></td>
+            <td><%= link_to @customer.followers.count, customer_followers_path(@customer.id) %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @customer.id != current_customer.id %>
+        <div class="text-center">
+          <%= render 'public/relationships/follow_button', customer: @customer %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-10 text-center my-2">
-　　  <h4>プロフィール</h4>
+　　  <h4><span class="border-bottom border-dark">プロフィール</span></h4>
 　　  <table class="table table-bordered">
         <tbody>
           <tr>
@@ -31,7 +56,8 @@
 　</div>
 　<div class="row">
 　  <div class="col-sm-6 text-center">
-　    <h5>投稿一覧</h5>
+　    <h5><span class="border-bottom border-dark">投稿一覧 (全<strong class="text-primary"><%= @customer.posts.count %></strong>件)</sapn></h5>
+
 　    <table class="table table-bordered">
 　      <thead>
 　        <tr>
@@ -40,47 +66,62 @@
 　        </tr>
 　      </thead>
 　      <tbody>
-　      <% @posts.each do |post| %>
-　        <tr>
-　          <td><%= l post.created_at %></td>
-　          <td><%= link_to post.title, post_path(post.id) %></td>
-　        </tr>
-　       <% end %>
+　      <% if @posts.exists? %>
+  　      <% @posts.each do |post| %>
+  　        <tr>
+  　          <td><%= l post.created_at %></td>
+  　          <td><%= link_to post.title, post_path(post.id) %></td>
+  　        </tr>
+  　       <% end %>
+  　     <% else %>
+  　        <tr>
+  　          <td colspan="2"><strong>投稿がありません</strong></td>
+  　        </tr>
+  　     <% end %>
 　      </tbody>
 　    </table>
 　    <%= paginate @posts %>
 　  </div>
 　  <div class="col-sm-5 text-center">
-　    <h5>いいね一覧</h5>
+　    <h5><span class="border-bottom border-dark"><i class="fas fa-heart"></i>いいね一覧 (全<strong class="text-danger"><%= @customer.goods.count %></strong>件)</sapn></span></h5>
 　    <table class="table table-bordered">
 　      <thead>
 　        <tr>
 　          <th>タイトル</th>
 　        </tr>
 　      </thead>
-　      <tbody>
-　      <% @goods.last(3).each do |good| %>
-　        <tr>
-　          <td><%= link_to good.post.title, post_path(good.post.id) %></td>
-　        </tr>
-　      <% end %>
-　      </tbody>
+　      <% if @goods.exists? %>
+  　      <tbody>
+    　      <% @goods.last(3).each do |good| %>
+    　        <tr>
+    　          <td><%= link_to good.post.title, post_path(good.post.id) %></td>
+    　        </tr>
+    　      <% end %>
+  　      </tbody>
+　      <% else %>
+　        <tbody>
+    　        <tr>
+    　          <td><strong>いいねがありません。</strong></td>
+  　        </tr>
+  　       </tbody>
+  　     <% end %>
 　    </table>
-　    <div class="text-right">
-        <%= link_to "→全てのいいねを見る", good_customer_path(@customer.id), class: "border-bottom" %>
-      </div>
+　    <% if @goods.exists? %>
+  　    <div class="text-right"><%= link_to "→︎全てのいいねを見る", good_customer_path(@customer.id), class: "border-bottom" %></div>
+  　   <% else %>
+  　   <% end %>
 　  </div>
 　</div>
-　<div class="row">
-　  <div class="col-sm-2"></div>
-　  <% if @customer.id == current_customer.id %>
-　    <div class="col-sm-3 text-center">
-    　  <%= link_to '会員情報を編集する', edit_customer_path, class: 'btn btn-success btn-block' %>
-    　</div>
-    　<div class="col-sm-3 text-center">
-    　  <%= link_to '退会する', unsubscribe_customer_path, class:"btn btn-danger btn-block" %>
-    　</div>
-　  <% end %>
-　  <div class="col-sm-2"></div>
-　</div>
+　<% if @customer.id == current_customer.id %>
+  　<div class="row border-top border-dark">
+  　  <div class="col-sm-2"></div>
+  　    <div class="col-sm-3 text-center mt-2">
+      　  <%= link_to '会員情報を編集する', edit_customer_path, class: 'btn btn-success btn-block' %>
+      　</div>
+      　<div class="col-sm-3 text-center mt-2">
+      　  <%= link_to '退会する', unsubscribe_customer_path, class:"btn btn-danger btn-block" %>
+      　</div>
+  　  <div class="col-sm-2"></div>
+  　</div>
+  <% end %>
 </div>
