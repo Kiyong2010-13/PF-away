@@ -78,3 +78,5 @@ gem 'kaminari'
 gem 'pry-byebug'
 
 gem 'rails-i18n'
+
+gem 'ransack'

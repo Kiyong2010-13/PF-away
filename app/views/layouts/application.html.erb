@@ -18,10 +18,13 @@
           <ul class="nav navbar-right">
             <% if admin_signed_in? %>
               <li><%= link_to "会員一覧", admin_root_path, class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "投稿一覧", admin_posts_path, class: "nav-link border text-light border-dark" %></li>
               <li><%= link_to "ジャンル管理", admin_genres_path, class: "nav-link border text-light border-dark" %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, class: "nav-link border text-light border-dark", method: :delete %></li>
             <% elsif customer_signed_in? %>
               <li><%= link_to "マイページ", customer_path(current_customer.id),  class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "フォロー", customer_followings_path(current_customer.id),  class: "nav-link border text-light border-dark" %></li>
+              <li><%= link_to "フォロワー", customer_followers_path(current_customer.id),  class: "nav-link border text-light border-dark" %></li>
               <li><%= link_to "投稿一覧", posts_path, class: "nav-link border text-light border-dark" %></li>
               <li><%= link_to "ログアウト", destroy_customer_session_path, class: "nav-link border text-light border-dark", method: :delete %></li>
             <% else %>
@@ -37,5 +40,14 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+      	<div class="row">
+        	<div class="mx-auto mt-5">
+        		<p>©︎soccer</p>
+        	</div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

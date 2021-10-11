@@ -1,6 +1,9 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @posts = Post.all.page(params[:page]).per(15)
+    @search = Post.ransack(params[:q])
+    @posts = @search.result.page(params[:page]).per(15)
   end
 
   def new
