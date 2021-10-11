@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     root :to => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :customers, only: [:show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
   end
 
   root to: 'homes#top'
