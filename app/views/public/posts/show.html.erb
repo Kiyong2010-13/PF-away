@@ -16,6 +16,7 @@
 　    </table>
     </div>
   </div>
+  
   <div class="row">
     <div class="col-sm-3">
     </div>
@@ -24,6 +25,7 @@
     </div>
     <div class="col-sm-3"></div>
   </div>
+  
   <div class="row">
     <div class="col-sm-2"></div>
     <div class="col-sm-8 my-3">
@@ -32,6 +34,7 @@
     </div>
     <div class="col-sm-2"></div>
   </div>
+  
   <div class="row mt-4">
     <div class="col-sm-4">
       <h6 class="text-center">投稿者:
@@ -62,6 +65,7 @@
       <% end %>
     </div>
   </div>
+  
   <div class="row mt-4 border-top border-dark">
     <div class="col-sm-3"></div>
     <div class="field col-sm-6 mt-4 text-center">
@@ -74,6 +78,7 @@
     <div class="col-sm-3">
     </div>
   </div>
+  
   <div class="row mt-4">
     <div class="col-sm-12">
        <p class="text-center text-primary"><strong class="border-bottom border-dark">コメント件数：【<%= @post.comments.count %>】件</strong></p>
@@ -107,6 +112,7 @@
       </table>
     </div>
   </div>
+  
   <div class="row">
     <div class="col-sm-2"></div>
     <% if @post.customer.id == current_customer.id %>
