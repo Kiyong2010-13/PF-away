@@ -70,7 +70,7 @@
     <div class="col-sm-3"></div>
     <div class="field col-sm-6 mt-4 text-center">
       <%= form_for [@post, @comment] do |f| %>
-        <h5 class="mb-2"><strong>投稿にコメントする</strong></h5>
+        <h5 class="mb-2"><strong><i class="far fa-comment"></i>投稿にコメントする</strong></h5>
         <%= f.text_field :comment, size: "40x35" %>
         <%= f.submit '送信', class: "btn btn-outline-secondary btn-sm" %>
       <% end %>
@@ -81,7 +81,7 @@
   
   <div class="row mt-4">
     <div class="col-sm-12">
-       <p class="text-center text-primary"><strong class="border-bottom border-dark">コメント件数：【<%= @post.comments.count %>】件</strong></p>
+       <p class="text-center text-primary"><strong class="border-bottom border-dark"><i class="far fa-comment"></i>コメント件数：【<%= @post.comments.count %>】件</strong></p>
       <table class="table">
         <thead>
           <tr>
