@@ -5,6 +5,7 @@
       <h2><strong><%= @customer.user_name %></strong>さんの会員情報</h2>
     </div>
   </div>
+
   <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-4 my-3 mb-2">
@@ -30,6 +31,7 @@
     </div>
     <div class="col-sm-4"></div>
   </div>
+
   <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm-10 text-center my-2">
@@ -54,6 +56,7 @@
       </table>
 　　</div>
 　</div>
+
 　<div class="row">
 　  <div class="col-sm-6 text-center">
 　    <h5><span class="border-bottom border-dark">投稿一覧 (全<strong class="text-primary"><%= @customer.posts.count %></strong>件)</sapn></h5>
@@ -112,16 +115,17 @@
   　   <% end %>
 　  </div>
 　</div>
+
 　<% if @customer.id == current_customer.id %>
   　<div class="row border-top border-dark">
-  　   <div class="col-sm-3"></div>
+  　   <div class="col-sm-2"></div>
   　   <div class="col-sm-3 text-center mt-2">
   　    <%= link_to '会員情報を編集する', edit_customer_path, class: 'btn btn-success btn-block' %>
   　   </div>
   　   <div class="col-sm-3 text-center mt-2">
   　     <%= link_to '退会する', unsubscribe_customer_path, class:"btn btn-danger btn-block" %>
   　   </div>
-  　   <div class="col-sm-3"></div>
+  　   <div class="col-sm-2"></div>
     </div>
   <% end %>
 </div>
