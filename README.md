@@ -42,7 +42,8 @@ https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVj
 - 言語：HTML,CSS,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - CSSフレームワーク：BootStrap
-- JSライブラリ：jQuery
 - IDE：Cloud9
+- EC2 : NGINX, PUMA
+- データベース管理システム : MySQL
 - gem : "devise"・"refile", require: "refile/rails", github: 'manfe/refile'・"refile-mini_magick"・"enum_help"
-・'bootstrap', '~> 4.5'・jquery-rails'・'font-awesome-sass'・'kaminari'・'pry-byebug'・'ransack'
+・'bootstrap', '~> 4.5'・jquery-rails'・'font-awesome-sass'・'kaminari'・'pry-byebug'・'ransack'・'dotenv-rails'・'mysql2'・'rails-i18n'
