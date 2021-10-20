@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, notice:"投稿が完了しました。"
     else
       @genres = Genre.all
       render :new
@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.customer_id = current_customer.id
     if @post.update(post_params)
-      redirect_to post_path
+      redirect_to post_path, notice:"投稿を編集しました。"
     else
       @genres = Genre.all
       render :edit
@@ -47,7 +47,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice:"投稿を削除しました。"
   end
 
   private
