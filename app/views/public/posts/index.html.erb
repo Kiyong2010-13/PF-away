@@ -30,7 +30,7 @@
           <tr>
             <th>投稿日時</th>
             <th>タイトル</th>
-            <th>投稿ユーザー</th>
+            <th class="text-left">投稿ユーザー</th>
             <th>ジャンル</th>
           </tr>
         </thead>
@@ -40,10 +40,12 @@
               <td><%= l post.created_at %></td>
               <td><%= link_to post.title, post_path(post.id) %></td>
               <td>
-                <%= link_to customer_path(post.customer.id) do %>
-                  <%= attachment_image_tag post.customer, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size:'25x25', class: "rounded-circle mb-2" %>
-                  <%= post.customer.user_name %>
-                <% end %>
+                <div class="text-left">
+                  <%= link_to customer_path(post.customer.id) do %>
+                    <%= attachment_image_tag post.customer, :profile_image,  format: 'jpeg', fallback: "no_image.jpg", size:'25x25', class: "rounded-circle mb-2" %>
+                    <%= post.customer.user_name %>
+                  <% end %>
+                </div>
                 </td>
               <td><%= post.genre.name %></td>
             </tr>
