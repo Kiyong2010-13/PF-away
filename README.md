@@ -38,7 +38,7 @@ https://docs.google.com/spreadsheets/d/15-C_vZ_N8jyOl2nGHIiZ6c1FtQnm02dqNdynJFVj
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux 2
 - 言語：HTML,CSS,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - CSSフレームワーク：BootStrap
